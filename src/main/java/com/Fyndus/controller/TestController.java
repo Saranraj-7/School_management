@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Fyndus.entity.Test;
-import com.Fyndus.service.TestMarksService;
 import com.Fyndus.service.TestService;
 
 @RestController
@@ -20,8 +19,6 @@ public class TestController {
 	@Autowired
 	TestService testService;
 
-	@Autowired
-	TestMarksService testMarksService;
 
 	@PostMapping("/test")
 	public Test createTest(@RequestBody Test test) {

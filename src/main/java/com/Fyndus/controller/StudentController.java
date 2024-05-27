@@ -1,49 +1,38 @@
-package com.Fyndus.controller;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.Fyndus.entity.Student;
-import com.Fyndus.entity.TestMarks;
-import com.Fyndus.service.StudentService;
-import com.Fyndus.service.TestMarksService;
-
-@RestController
-@RequestMapping("/api")
-public class StudentController {
-
-	@Autowired StudentService studentService;
+	package com.Fyndus.controller;
 	
-	@Autowired TestMarksService testMarksService;
+	import java.util.List;
 	
-	@PostMapping("/student")
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.PostMapping;
+	import org.springframework.web.bind.annotation.RequestBody;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RestController;
+	import com.Fyndus.entity.Student;
+	import com.Fyndus.service.StudentService;
 	
-	public Student createStudent(@RequestBody Student student) {
-		return this.studentService.createStudent(student);
-	}
+	@RestController
+	@RequestMapping("/api")
+	public class StudentController {
 	
-	@GetMapping("/student")
-	public List<Student> retriveStudent(Student student) {
-		return this.studentService.retriveStudent(student);
-	}
-	
-	@GetMapping("/student/{id}")
-	public Optional<Student> studentById(@PathVariable long id) {
-		return this.studentService.studentById(id);
-	}
-	
-	  @GetMapping("/student/marks/{studentId}")
-	    public Optional<TestMarks> getStudentMarks(@PathVariable Long studentId) {
-	        return testMarksService.getMarksForStudent(studentId);
-	    }
-	
+		@Autowired StudentService studentService;
+		
+		
+		@PostMapping("/student")
+		
+		public Student createStudent(@RequestBody Student student) {
+			return this.studentService.createStudent(student);
+		}
+		
+		@GetMapping("/student")
+		public List<Student> retriveStudent(Student student) {
+			return this.studentService.retriveStudent(student);
+		}
 		
 	
-}
+		
+		
+		
+			
+		
+	}

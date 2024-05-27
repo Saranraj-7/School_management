@@ -12,7 +12,7 @@ public class Choice {
 	private Long id;
 	private String choices;
 	private Boolean isCorrect;
-	private String point;
+	private Long point;
 
 	public Long getId() {
 		return id;
@@ -37,17 +37,17 @@ public class Choice {
 	public void setIsCorrect(Boolean isCorrect) {
 		this.isCorrect = isCorrect;
 		if (isCorrect != null && isCorrect) {
-			this.point = "Selected Option is Correct";
+			this.point = 10L;
 		} else {
-			this.point = "Selected Option is InCorrect";
+			this.point = 0L;
 		}
 	}
 
-	public String getPoint() {
+	public Long getPoint() {
 		return point;
 	}
 
-	public void setPoint(String point) {
+	public void setPoint(Long point) {
 		this.point = point;
 	}
 }
