@@ -10,15 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.Fyndus.entity.Student;
+import com.Fyndus.entity.TestMarks;
 import com.Fyndus.service.StudentService;
+import com.Fyndus.service.TestMarksService;
 
 @RestController
 @RequestMapping("/api")
 public class StudentController {
 
 	@Autowired StudentService studentService;
+	
+	@Autowired TestMarksService testMarksService;
 	
 	@PostMapping("/student")
 	
@@ -35,4 +38,12 @@ public class StudentController {
 	public Optional<Student> studentById(@PathVariable long id) {
 		return this.studentService.studentById(id);
 	}
+	
+	  @GetMapping("/student/marks/{studentId}")
+	    public Optional<TestMarks> getStudentMarks(@PathVariable Long studentId) {
+	        return testMarksService.getMarksForStudent(studentId);
+	    }
+	
+		
+	
 }

@@ -4,50 +4,50 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Choice {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
+	private Long id;
+	private String choices;
+	private Boolean isCorrect;
+	private String point;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
-    private long id;
+	public Long getId() {
+		return id;
+	}
 
-    private String text;
-    private boolean correct;
-    @ManyToOne
-    private Question question;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public long getId() {
-        return id;
-    }
- 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public String getChoices() {
+		return choices;
+	}
 
-    public String getText() {
-        return text;
-    }
+	public void setChoices(String choices) {
+		this.choices = choices;
+	}
 
-    public void setText(String text) {
-        this.text = text;
-    }
+	public Boolean getIsCorrect() {
+		return isCorrect;
+	}
 
-    public boolean isCorrect() {
-        return correct;
-    }
+	public void setIsCorrect(Boolean isCorrect) {
+		this.isCorrect = isCorrect;
+		if (isCorrect != null && isCorrect) {
+			this.point = "Selected Option is Correct";
+		} else {
+			this.point = "Selected Option is InCorrect";
+		}
+	}
 
-    public void setCorrect(boolean correct) {
-        this.correct = correct;
-    }
+	public String getPoint() {
+		return point;
+	}
 
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
+	public void setPoint(String point) {
+		this.point = point;
+	}
 }
-	
