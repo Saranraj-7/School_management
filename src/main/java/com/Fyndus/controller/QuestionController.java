@@ -23,7 +23,7 @@ public class QuestionController {
 	public Question createQuestion(@RequestBody Question question) {
 		return questionService.createQuestion(question);
 	}
-	
+
 	@GetMapping("/question")
 	public List<Question> retriveQuestion(Question question) {
 		return questionService.retriveQuestion(question);

@@ -22,15 +22,7 @@ public class Test {
 	@ManyToOne
 	private Choice choice;
 
-	private Integer marks;
-
-	public Integer getMarks() {
-		return marks;
-	}
-
-	public void setMarks(Integer marks) {
-		this.marks = marks;
-	}
+	
 
 	public Long getId() {
 		return id;
