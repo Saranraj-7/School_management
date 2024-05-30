@@ -11,14 +11,15 @@ import com.Fyndus.respository.SchoolRepository;
 @Service
 public class SchoolService {
 
-	@Autowired SchoolRepository schoolRepository;
-	
+	@Autowired
+	SchoolRepository schoolRepository;
+
 	public School createSchool(School school) {
 		return schoolRepository.save(school);
 	}
-	
-	public List<School> retriveSchool(School school){
+
+	public List<School> retriveSchool() {
 		return schoolRepository.findAll();
 	}
-	
+
 }

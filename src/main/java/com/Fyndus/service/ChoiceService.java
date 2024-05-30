@@ -1,26 +1,46 @@
 package com.Fyndus.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Fyndus.DTO.ChoiceDTO;
 import com.Fyndus.entity.Choice;
 import com.Fyndus.respository.ChoiceRepository;
 
 @Service
 public class ChoiceService {
-	@Autowired
-	ChoiceRepository choiceRepository;
 
-	
-	public Choice createChoice(Choice choice) {
-		return choiceRepository.save(choice);
-	}
+    @Autowired
+    private ChoiceRepository choiceRepository;
 
-	public List<Choice> retriveChoice(Choice choice) {
-		return choiceRepository.findAll();
-	}
-	
+    private Choice toEntity(ChoiceDTO choiceDTO) {
+        Choice choice = new Choice();
+        choice.setId(choiceDTO.getId());
+        choice.setChoices(choiceDTO.getChoices());
+        return choice;
+    }
 
+    private ChoiceDTO toDTO(Choice choice) {
+        return new ChoiceDTO(choice.getId(), choice.getChoices());
+    }
+
+    public ChoiceDTO createChoice(ChoiceDTO choiceDTO) {
+        Choice choice = toEntity(choiceDTO);
+        Choice savedChoice = choiceRepository.save(choice);
+        return toDTO(savedChoice);
+    }
+
+    public List<ChoiceDTO> retrieveChoices() {
+        List<Choice> choices = choiceRepository.findAll();
+        List<ChoiceDTO> choiceDTOs = new ArrayList<>();
+
+        for (Choice choice : choices) {
+            choiceDTOs.add(toDTO(choice));
+        }
+
+        return choiceDTOs;
+    }
 }

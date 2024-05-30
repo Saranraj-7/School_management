@@ -11,7 +11,7 @@ public class School {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
 	private Long id;
-	
+
 	private String name;
 
 	public Long getId() {

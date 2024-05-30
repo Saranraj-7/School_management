@@ -3,29 +3,28 @@ package com.Fyndus.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import com.Fyndus.entity.Question;
+import com.Fyndus.DTO.QuestionDTO;
 import com.Fyndus.service.QuestionService;
 
 @RestController
 @RequestMapping("/api")
 public class QuestionController {
 
-	@Autowired
-	QuestionService questionService;
+    @Autowired
+    private QuestionService questionService;
 
-	@PostMapping("/question")
-	public Question createQuestion(@RequestBody Question question) {
-		return questionService.createQuestion(question);
-	}
+    @PostMapping("/question")
+    public ResponseEntity<QuestionDTO> createQuestion(@RequestBody QuestionDTO questionDTO) {
+        QuestionDTO createdQuestion = questionService.createQuestion(questionDTO);
+        return ResponseEntity.ok(createdQuestion);
+    }
 
-	@GetMapping("/question")
-	public List<Question> retriveQuestion(Question question) {
-		return questionService.retriveQuestion(question);
-	}
+    @GetMapping("/question")
+    public ResponseEntity<List<QuestionDTO>> getAllQuestions() {
+        List<QuestionDTO> questionDTOs = questionService.retrieveQuestions();
+        return ResponseEntity.ok(questionDTOs);
+    }
 }

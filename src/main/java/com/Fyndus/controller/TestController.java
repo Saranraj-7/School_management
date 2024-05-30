@@ -9,25 +9,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Fyndus.entity.Test;
+import com.Fyndus.DTO.TestDTO;
 import com.Fyndus.service.TestService;
 
 @RestController
 @RequestMapping("/api")
 public class TestController {
 
-	@Autowired
-	TestService testService;
-
-
-	@PostMapping("/test")
-	public Test createTest(@RequestBody Test test) {
-		return this.testService.createTest(test);
-	}
-
-	@GetMapping("/test")
-	public List<Test> retriveTest(Test test) {
-		return this.testService.retriveTest(test);
-	}
-
+    @Autowired 
+    private TestService testService;
+    
+    @PostMapping("/test")
+    public TestDTO createTest(@RequestBody TestDTO testDTO) {
+        return testService.createTest(testDTO);
+    }
+    
+    @GetMapping("/tests")
+    public List<TestDTO> retrieveTests() {
+        return testService.retrieveTests();
+    }
 }

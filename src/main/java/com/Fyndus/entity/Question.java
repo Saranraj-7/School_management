@@ -18,7 +18,7 @@ public class Question {
 	@ManyToOne
 	private Tutor tutor;
 
-	
+
 
 	public long getId() {
 		return id;

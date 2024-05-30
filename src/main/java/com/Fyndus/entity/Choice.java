@@ -26,8 +26,8 @@ public class Choice {
 		return choices;
 	}
 
-	public void setChoices(String choices) {
-		this.choices = choices;
+	public void setChoices(String choice) {
+		this.choices = choice;
 	}
 
 	public Boolean getIsCorrect() {

@@ -9,22 +9,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Fyndus.entity.Choice;
+import com.Fyndus.DTO.ChoiceDTO;
 import com.Fyndus.service.ChoiceService;
 
 @RestController
 @RequestMapping("/api")
 public class ChoiceController {
 
-	@Autowired ChoiceService choiceService;
-	
+	@Autowired
+	private ChoiceService choiceService;
+
 	@PostMapping("/choice")
-	public Choice createChoice(@RequestBody Choice choice) {
-		return this.choiceService.createChoice(choice);
+	public ChoiceDTO createChoice(@RequestBody ChoiceDTO choiceDTO) {
+		return choiceService.createChoice(choiceDTO);
 	}
-	
-	@GetMapping("/choice")
-	public List<Choice> retriveChoice(Choice choice) {
-		return this.choiceService.retriveChoice(choice);
+
+	@GetMapping("/choices")
+	public List<ChoiceDTO> retrieveChoices() {
+		return choiceService.retrieveChoices();
 	}
 }

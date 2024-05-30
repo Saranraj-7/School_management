@@ -18,15 +18,15 @@ public class SchoolController {
 
 	@Autowired
 	SchoolService schoolService;
-	
+
 	@PostMapping("/school")
 	public School createSchool(@RequestBody School school) {
 		return schoolService.createSchool(school);
 	}
-	
+
 	@GetMapping("/school")
-	public List<School> retriveSchool(School school){
-		return schoolService.retriveSchool(school);
+	public List<School> retriveSchool() {
+		return schoolService.retriveSchool();
 	}
 
 }

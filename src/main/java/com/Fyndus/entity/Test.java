@@ -22,8 +22,6 @@ public class Test {
 	@ManyToOne
 	private Choice choice;
 
-	
-
 	public Long getId() {
 		return id;
 	}
