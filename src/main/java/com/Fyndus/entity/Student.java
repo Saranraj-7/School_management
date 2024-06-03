@@ -12,10 +12,9 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequenceGenerator")
 	private Long id;
-	
-	
+
 	private String name;
-	
+
 	@ManyToOne
 	private School school;
 

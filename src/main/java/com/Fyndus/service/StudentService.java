@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.Fyndus.entity.Student;
 import com.Fyndus.respository.StudentRepository;
 
@@ -15,7 +14,6 @@ public class StudentService {
 	@Autowired
 	StudentRepository studentRepository;
 
-	
 	public Student createStudent(Student student) {
 		return studentRepository.save(student);
 	}
@@ -28,5 +26,7 @@ public class StudentService {
 		return studentRepository.findById(id);
 	}
 
-	 
+	public List<Student> searchByName(String name){
+		return studentRepository.findByName(name);
+	}
 }

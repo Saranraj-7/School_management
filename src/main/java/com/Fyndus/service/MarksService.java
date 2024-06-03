@@ -36,14 +36,6 @@ public class MarksService {
 		return totalPoints;
 	}
 
-	public Test saveTest(Test test) {
-		return testRepository.save(test);
-	}
-
-	public List<Test> getAllTests() {
-		return testRepository.findAll();
-	}
-
 	public MarksDTO getStudentTotalMarks(Long studentId) {
 		Student student = studentRepository.findById(studentId).orElse(null);
 		if (student == null) {
