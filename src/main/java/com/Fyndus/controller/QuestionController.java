@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.Fyndus.DTO.QuestionDTO;
 import com.Fyndus.service.QuestionService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/question")
 public class QuestionController {
 
 	@Autowired
@@ -24,4 +23,10 @@ public class QuestionController {
 	public List<QuestionDTO> getQuestion() {
 		return questionService.retrieveQuestions();
 	}
+
+	@GetMapping("/search")
+	public List<QuestionDTO> searchQuestions(@RequestParam String text) {
+		return questionService.searchQuestions(text);
+	}
+
 }

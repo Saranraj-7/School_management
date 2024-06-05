@@ -3,10 +3,8 @@ package com.Fyndus.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.Fyndus.DTO.QuestionDTO;
 import com.Fyndus.entity.Question;
 import com.Fyndus.entity.Tutor;
@@ -54,4 +52,10 @@ public class QuestionService {
 
 		return questionDTOs;
 	}
+	
+	 public List<QuestionDTO> searchQuestions(String text) {
+	        return questionRepository.findByTextContainingIgnoreCase(text);
+	    }
+
+
 }

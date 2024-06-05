@@ -25,4 +25,17 @@ public class SchoolService {
 	public Page<School> retrieveSchoolPage(Pageable pageable) {
 		return schoolRepository.findAll(pageable);
 	}
+
+	public List<School> searchByNameAndId(String name, Long id) {
+		return schoolRepository.searchByNameAndId(name, id);
+	}
+
+	public List<School> searchByName(String name) {
+		return schoolRepository.searchByName(name);
+	}
+
+	public List<School> searchById(Long id) {
+		return schoolRepository.searchById(id);
+	}
+
 }

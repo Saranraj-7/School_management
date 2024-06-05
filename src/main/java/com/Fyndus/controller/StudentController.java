@@ -1,8 +1,6 @@
 package com.Fyndus.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +12,7 @@ import com.Fyndus.entity.Student;
 import com.Fyndus.service.StudentService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/students")
 public class StudentController {
 
 	@Autowired
@@ -30,10 +28,19 @@ public class StudentController {
 	public List<Student> retriveStudent(Student student) {
 		return this.studentService.retriveStudent(student);
 	}
-	
-	@GetMapping("/student/name")
-	public List<Student> findByName(@RequestParam String name){
+
+	@GetMapping("/student/search")
+	public List<Student> findByName(@RequestParam String name) {
 		return this.studentService.searchByName(name);
 	}
+
+    @GetMapping("/search")
+    public List<Student> searchStudents(@RequestParam(required = false) String name,
+                                        @RequestParam(required = false) Long id,
+                                        @RequestParam(required = false) Long schoolId,
+                                        @RequestParam(required = false) String schoolName) {
+        return studentService.searchStudents(name, id, schoolId, schoolName);
+    }
+
 
 }

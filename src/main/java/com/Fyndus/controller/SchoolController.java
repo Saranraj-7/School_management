@@ -32,9 +32,22 @@ public class SchoolController {
 	}
 
 	@GetMapping("/schoolPage")
-	public Page<School> retrieveSchoolPage(@RequestParam int page,
-			@RequestParam int size) {
+	public List<School> retrieveSchoolPage(@RequestParam int page, @RequestParam int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return schoolService.retrieveSchoolPage(pageable);
+		Page<School> schoolPage = schoolService.retrieveSchoolPage(pageable);
+		return schoolPage.getContent();
 	}
+
+	@GetMapping("/schoolsearch")
+	public List<School> searchByNameAndId(@RequestParam(required = false) String name,
+			@RequestParam(required = false) Long id) {
+		if (name != null && id != null) {
+			return schoolService.searchByNameAndId(name, id);
+		} else if (name != null) {
+			return schoolService.searchByName(name);
+		} else {
+			return schoolService.searchById(id);
+		}
+	}
+
 }

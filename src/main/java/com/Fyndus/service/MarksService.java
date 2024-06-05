@@ -26,15 +26,19 @@ public class MarksService {
 	}
 
 	public Long calculateTotalPointsForStudent(Long studentId) {
-		List<Test> tests = getTestsByStudentId(studentId);
-		long totalPoints = 0;
-		for (Test test : tests) {
-			if (test.getChoice() != null && test.getChoice().getPoint() != null) {
-				totalPoints += test.getChoice().getPoint();
-			}
-		}
-		return totalPoints;
+	    List<Test> tests = getTestsByStudentId(studentId);
+	    long totalPoints = 0;
+	    for (Test test : tests) {
+	        if (test.getChoice() != null && test.getChoice().getPoint() != null) {
+	            totalPoints += test.getChoice().getPoint();
+	        } else {
+	            System.out.println("Test or Choice is null for test ID: " + test.getId());
+	        }
+	    }
+	    System.out.println("Total points for student ID " + studentId + ": " + totalPoints);
+	    return totalPoints;
 	}
+
 
 	public MarksDTO getStudentTotalMarks(Long studentId) {
 		Student student = studentRepository.findById(studentId).orElse(null);

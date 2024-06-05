@@ -26,4 +26,16 @@ public class TutorService {
 	public Optional<Tutor> tutorById(long id) {
 		return tutorRepository.findById(id);
 	}
+	
+	public List<Tutor> searchByName(String name){
+		return tutorRepository.searchByName(name);
+	}
+	
+	public List<Tutor> searchById(long id){
+		return tutorRepository.searchById(id);
+	}
+	
+	public List<Tutor> searchByTutorNameAndId(String name,long id){
+		return tutorRepository.searchByTutorNameAndId(name,id);
+	}
 }
