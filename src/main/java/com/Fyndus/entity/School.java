@@ -1,6 +1,5 @@
 package com.Fyndus.entity;
 
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +31,4 @@ public class School {
 		this.name = name;
 	}
 
-	public static List<School> emptyList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

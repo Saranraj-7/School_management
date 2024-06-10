@@ -11,31 +11,22 @@ import com.Fyndus.respository.SchoolRepository;
 @Service
 public class SchoolService {
 
-	@Autowired
-	SchoolRepository schoolRepository;
+    @Autowired
+    SchoolRepository schoolRepository;
 
-	public School createSchool(School school) {
-		return schoolRepository.save(school);
-	}
+    public School createSchool(School school) {
+        return schoolRepository.save(school);
+    }
 
-	public List<School> retriveSchool() {
-		return schoolRepository.findAll();
-	}
+    public List<School> retriveSchool() {
+        return schoolRepository.findAll();
+    }
 
-	public Page<School> retrieveSchoolPage(Pageable pageable) {
-		return schoolRepository.findAll(pageable);
-	}
+    public Page<School> retrieveSchoolPage(Pageable pageable) {
+        return schoolRepository.findAll(pageable);
+    }
 
-	public List<School> searchByNameAndId(String name, Long id) {
-		return schoolRepository.searchByNameAndId(name, id);
-	}
-
-	public List<School> searchByName(String name) {
-		return schoolRepository.searchByName(name);
-	}
-
-	public List<School> searchById(Long id) {
-		return schoolRepository.searchById(id);
-	}
-
+    public List<School> searchSchools(String name, Long id) {
+        return schoolRepository.search(name, id);
+    }
 }

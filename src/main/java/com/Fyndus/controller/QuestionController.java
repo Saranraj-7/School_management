@@ -8,7 +8,8 @@ import com.Fyndus.DTO.QuestionDTO;
 import com.Fyndus.service.QuestionService;
 
 @RestController
-@RequestMapping("/api/question")
+@RequestMapping("/api/questions")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class QuestionController {
 
 	@Autowired

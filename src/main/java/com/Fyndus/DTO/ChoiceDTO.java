@@ -4,14 +4,16 @@ public class ChoiceDTO {
 
 	private long id;
 	private String choices;
+	private Boolean isCorrect;
 
-	public ChoiceDTO(long id, String choices) {
+	public ChoiceDTO(long id, String choices, Boolean isCorrect) {
 		this.id = id;
 		this.choices = choices;
+		this.isCorrect = isCorrect;
 	}
 
 	public long getId() {
-		return id;
+		return id;	
 	}
 
 	public void setId(long id) {
@@ -24,5 +26,13 @@ public class ChoiceDTO {
 
 	public void setChoices(String choices) {
 		this.choices = choices;
+	}
+
+	public Boolean getIsCorrect() {
+		return isCorrect;
+	}
+
+	public void setIsCorrect(Boolean isCorrect) {
+		this.isCorrect = isCorrect;
 	}
 }

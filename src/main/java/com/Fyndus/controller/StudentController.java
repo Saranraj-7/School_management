@@ -2,6 +2,7 @@ package com.Fyndus.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import com.Fyndus.service.StudentService;
 
 @RestController
 @RequestMapping("/api/students")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class StudentController {
 
 	@Autowired
@@ -34,13 +36,10 @@ public class StudentController {
 		return this.studentService.searchByName(name);
 	}
 
-    @GetMapping("/search")
-    public List<Student> searchStudents(@RequestParam(required = false) String name,
-                                        @RequestParam(required = false) Long id,
-                                        @RequestParam(required = false) Long schoolId,
-                                        @RequestParam(required = false) String schoolName) {
-        return studentService.searchStudents(name, id, schoolId, schoolName);
-    }
-
-
+	@GetMapping("/search")
+	public List<Student> searchStudents(@RequestParam(required = false) String name,
+			@RequestParam(required = false) Long id, @RequestParam(required = false) Long schoolId,
+			@RequestParam(required = false) String schoolName) {
+		return studentService.searchStudents(name, id, schoolId, schoolName);
+	}
 }

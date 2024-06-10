@@ -3,6 +3,7 @@ package com.Fyndus.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,13 +14,14 @@ import com.Fyndus.entity.Tutor;
 import com.Fyndus.service.TutorService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/tutors")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class TutorController {
 
 	@Autowired
 	TutorService tutorService;
 
-	@PostMapping("/tutor")
+	@PostMapping("/tutor/tutors")
 	public Tutor createTutor(@RequestBody Tutor tutor) {
 		return tutorService.createTutor(tutor);
 	}

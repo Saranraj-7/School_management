@@ -2,37 +2,44 @@ package com.Fyndus.DTO;
 
 public class TestDTO {
 
-	private long id;
-	private QuestionDTO questionDTO;
-	private ChoiceDTO choiceDTO;
+    private Long id;
+    private Long studentId;
+    private Long questionId;
+    private Long choiceId;
 
-	public TestDTO(long id, QuestionDTO questionDTO, ChoiceDTO choiceDTO) {
-		this.id = id;
-		this.questionDTO = questionDTO;
-		this.choiceDTO = choiceDTO;
+    public TestDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public long getId() {
-		return id;
-	}
+	public Long getId() {
+        return id;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public QuestionDTO getQuestionDTO() {
-		return questionDTO;
-	}
+    public Long getStudentId() {
+        return studentId;
+    }
 
-	public void setQuestionDTO(QuestionDTO questionDTO) {
-		this.questionDTO = questionDTO;
-	}
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
 
-	public ChoiceDTO getChoiceDTO() {
-		return choiceDTO;
-	}
+    public Long getQuestionId() {
+        return questionId;
+    }
 
-	public void setChoiceDTO(ChoiceDTO choiceDTO) {
-		this.choiceDTO = choiceDTO;
-	}
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
+    }
+
+    public Long getChoiceId() {
+        return choiceId;
+    }
+
+    public void setChoiceId(Long choiceId) {
+        this.choiceId = choiceId;
+    }
 }
