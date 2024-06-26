@@ -20,29 +20,29 @@ import com.Fyndus.service.SchoolService;
 @CrossOrigin(origins = "http://localhost:3000/")
 public class SchoolController {
 
-    @Autowired
-    SchoolService schoolService;
+	@Autowired
+	SchoolService schoolService;
 
-    @PostMapping("/create")
-    public School createSchool(@RequestBody School school) {
-        return schoolService.createSchool(school);
-    }
+	@PostMapping("/create")
+	public School createSchool(@RequestBody School school) {
+		return schoolService.createSchool(school);
+	}
 
-//    @GetMapping("/retrieveAll")
-//    public List<School> retrieveAllSchools() {
-//        return schoolService.retrieveSchoolPage();
-//    }
+	@GetMapping("/school")
+	public List<School> retriveSchool() {
+		return schoolService.retriveSchool();
+	}
 
-    @GetMapping("/retrievePage")
-    public List<School> retrieveSchoolPage(@RequestParam int page, @RequestParam int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<School> schoolPage = schoolService.retrieveSchoolPage(pageable);
-        return schoolPage.getContent();
-    }
+	@GetMapping("/retrievePage")
+	public List<School> retrieveSchoolPage(@RequestParam int page, @RequestParam int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<School> schoolPage = schoolService.retrieveSchoolPage(pageable);
+		return schoolPage.getContent();
+	}
 
-    @GetMapping("/search")
-    public List<School> searchSchools(@RequestParam(required = false) String name,
-                                      @RequestParam(required = false) Long id) {
-        return schoolService.searchSchools(name, id);
-    }
+	@GetMapping("/search")
+	public List<School> searchSchools(@RequestParam(required = false) String name,
+			@RequestParam(required = false) Long id) {
+		return schoolService.searchSchools(name, id);
+	}
 }
