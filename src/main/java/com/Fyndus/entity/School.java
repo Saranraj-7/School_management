@@ -1,6 +1,5 @@
 package com.Fyndus.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,8 +14,10 @@ public class School {
 
 	private String name;
 
+	private String address;
+
 	public Long getId() {
-		return id;
+		return id;	
 	}
 
 	public void setId(Long id) {
@@ -29,6 +30,14 @@ public class School {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

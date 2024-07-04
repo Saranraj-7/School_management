@@ -18,4 +18,6 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
 	@Query(value = "SELECT * FROM Tutor WHERE id = ?1 AND name = ?2", nativeQuery = true)
 	List<Tutor> searchByTutorNameAndId(String name, long id);
 
+	List<Tutor> findByName(String name);
+
 }

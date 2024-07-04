@@ -4,8 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,20 +17,15 @@ import com.Fyndus.service.SchoolService;
 
 @RestController
 @RequestMapping("/api/schools")
-@CrossOrigin(origins = "http://localhost:3000/")
 public class SchoolController {
 
 	@Autowired
 	SchoolService schoolService;
 
 	@PostMapping("/create")
-	public School createSchool(@RequestBody School school) {
-		return schoolService.createSchool(school);
-	}
-
-	@GetMapping("/school")
-	public List<School> retriveSchool() {
-		return schoolService.retriveSchool();
+	public ResponseEntity<School> createSchool(@RequestBody School school) {
+		School createdSchool = schoolService.createSchool(school);
+		return ResponseEntity.ok(createdSchool);
 	}
 
 	@GetMapping("/retrievePage")
@@ -41,8 +36,9 @@ public class SchoolController {
 	}
 
 	@GetMapping("/search")
-	public List<School> searchSchools(@RequestParam(required = false) String name,
-			@RequestParam(required = false) Long id) {
-		return schoolService.searchSchools(name, id);
+	public ResponseEntity<List<School>> searchSchools(@RequestParam("search") String search) {
+		List<School> schools = schoolService.searchSchools(search);
+		return ResponseEntity.ok(schools);
 	}
+
 }

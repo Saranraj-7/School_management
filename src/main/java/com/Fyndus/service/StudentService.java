@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Fyndus.entity.Student;
+import com.Fyndus.exception.ErrorHandler;
 import com.Fyndus.respository.StudentRepository;
 
 @Service
@@ -14,6 +15,10 @@ public class StudentService {
 	StudentRepository studentRepository;
 
 	public Student createStudent(Student student) {
+		List<Student> existingStudents = studentRepository.findByName(student.getName());
+		if (!existingStudents.isEmpty()) {
+			throw new ErrorHandler("Student with this name already exists");
+		}
 		return studentRepository.save(student);
 	}
 
@@ -31,6 +36,10 @@ public class StudentService {
 
 	public List<Student> searchStudents(String name, Long id, Long schoolId, String schoolName) {
 		return studentRepository.searchByCriteria(name, id, schoolId, schoolName);
+	}
+
+	public List<Student> getAllStudents() {
+		return studentRepository.findAll();
 	}
 
 }

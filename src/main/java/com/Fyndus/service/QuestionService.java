@@ -22,7 +22,7 @@ public class QuestionService {
 
 	public QuestionDTO createQuestion(QuestionDTO questionDTO) {
 		Long tutorId = questionDTO.getTutorId();
-
+				
 		Optional<Tutor> tutorOptional = tutorRepository.findById(tutorId);
 
 		if (tutorOptional.isEmpty()) {
@@ -52,10 +52,9 @@ public class QuestionService {
 
 		return questionDTOs;
 	}
-	
-	 public List<QuestionDTO> searchQuestions(String text) {
-	        return questionRepository.findByTextContainingIgnoreCase(text);
-	    }
 
+	public List<QuestionDTO> searchQuestions(String text) {
+		return questionRepository.findByTextContainingIgnoreCase(text);
+	}
 
 }

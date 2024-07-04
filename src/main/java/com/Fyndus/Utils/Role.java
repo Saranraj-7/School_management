@@ -2,5 +2,5 @@ package com.Fyndus.Utils;
 
 public enum Role {
 
-	USER,ADMIN
+	USER,ADMIN,PRINCIPAL,TEACHER
 }
